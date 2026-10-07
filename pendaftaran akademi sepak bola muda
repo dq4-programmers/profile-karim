@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Akademi Sepak Bola</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f5f7f6;
+      color: #222;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+
+      background: rgba(3, 35, 20, 0.95);
+      backdrop-filter: blur(10px);
+
+      padding: 15px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      color: white;
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .logo span {
+      color: #f5c400;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: .3s;
+    }
+
+    nav ul li a:hover {
+      color: #f5c400;
+    }
+
+    .nav-button {
+      background: #f5c400;
+      color: #102b1c !important;
+      padding: 10px 17px;
+      border-radius: 7px;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+      color: white;
+
+      padding: 120px 20px 80px;
+
+      background:
+        linear-gradient(
+          rgba(0, 35, 20, .82),
+          rgba(0, 80, 40, .75)
+        ),
+        radial-gradient(
+          circle at center,
+          #159447,
+          #031b10
+        );
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(245,196,0,.15);
+      border: 1px solid #f5c400;
+      color: #f5c400;
+
+      padding: 8px 18px;
+      border-radius: 50px;
+
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 75px);
+      line-height: 1;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #f5c400;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #d9eee2;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .hero-buttons {
+      margin-top: 35px;
+
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 14px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    .btn-primary {
+      background: #f5c400;
+      color: #172b1e;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(245,196,0,.3);
+    }
+
+    .btn-outline {
+      border: 1px solid white;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: #06371f;
+    }
+
+    /* =========================
+       GENERAL SECTION
+    ========================= */
+
+    section {
+      padding: 80px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title small {
+      color: #08743c;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+      margin-top: 8px;
+      color: #123c27;
+    }
+
+    .section-title p {
+      max-width: 650px;
+      margin: 12px auto 0;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-image {
+      min-height: 400px;
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          rgba(0, 80, 40, .5),
+          rgba(0, 20, 10, .6)
+        ),
+        radial-gradient(circle, #168c48, #062d1a);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 120px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.15);
+    }
+
+    .about-content h2 {
+      font-size: 35px;
+      color: #123c27;
+      margin-bottom: 18px;
+    }
+
+    .about-content p {
+      color: #666;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .about-list {
+      margin-top: 25px;
+      list-style: none;
+    }
+
+    .about-list li {
+      margin-bottom: 12px;
+      font-weight: bold;
+      color: #174d31;
+    }
+
+    /* =========================
+       PROGRAM
+    ========================= */
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .program-card {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+
+      border: 1px solid #e7e7e7;
+
+      transition: .3s;
+    }
+
+    .program-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0,0,0,.1);
+      border-color: #0b8b48;
+    }
+
+    .program-icon {
+      width: 55px;
+      height: 55px;
+
+      background: #eaf8f0;
+      color: #08743c;
+
+      border-radius: 12px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 27px;
+      margin-bottom: 20px;
+    }
+
+    .program-card h3 {
+      color: #123c27;
+      margin-bottom: 10px;
+    }
+
+    .program-card p {
+      color: #666;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    /* =========================
+       AGE GROUP
+    ========================= */
+
+    .age-section {
+      background: #063a20;
+      color: white;
+    }
+
+    .age-section .section-title small {
+      color: #f5c400;
+    }
+
+    .age-section .section-title h2 {
+      color: white;
+    }
+
+    .age-section .section-title p {
+      color: #c7dfd0;
+    }
+
+    .age-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .age-card {
+      padding: 30px 20px;
+      text-align: center;
+
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.05);
+
+      border-radius: 15px;
+      transition: .3s;
+    }
+
+    .age-card:hover {
+      background: #f5c400;
+      color: #163322;
+      transform: translateY(-5px);
+    }
+
+    .age-card strong {
+      display: block;
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .age-card span {
+      font-size: 14px;
+    }
+
+    /* =========================
+       FACILITY
+    ========================= */
+
+    .facility-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .facility-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+
+      box-shadow: 0 5px 20px rgba(0,0,0,.06);
+    }
+
+    .facility-card .icon {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    .facility-card h3 {
+      color: #123c27;
+      margin-bottom: 8px;
+    }
+
+    .facility-card p {
+      color: #777;
+      font-size: 14px;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      background:
+        linear-gradient(
+          135deg,
+          #08743c,
+          #06341e
+        );
+
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .cta h2 {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      color: #d6eadf;
+      margin-bottom: 30px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #02190e;
+      color: #b9cfc3;
+      padding: 40px 7%;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    footer h3 {
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    footer p {
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer li {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #b9cfc3;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #f5c400;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,.1);
+      margin-top: 30px;
+      padding-top: 20px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 800px) {
+
+      nav ul {
+        display: none;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .program-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .age-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .facility-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image {
+        min-height: 280px;
+      }
+
+    }
+
+    @media (max-width: 500px) {
+
+      section {
+        padding: 60px 5%;
+      }
+
+      .hero {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .section-title h2 {
+        font-size: 28px;
+      }
+
+      .age-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cta h2 {
+        font-size: 30px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVBAR
+  ========================== -->
+
+  <nav>
+
+    <div class="logo">
+      ⚽ AKADEMI <span>SEPAK BOLA</span>
+    </div>
+
+    <ul>
+      <li><a href="#home">Beranda</a></li>
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#program">Program</a></li>
+      <li><a href="#usia">Kelompok Usia</a></li>
+      <li><a href="#fasilitas">Fasilitas</a></li>
+    </ul>
+
+    <a href="#daftar" class="nav-button">
+      Daftar
+    </a>
+
+  </nav>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <header class="hero" id="home">
+
+    <div class="hero-content">
+
+      <div class="hero-badge">
+        ⚽ PEMBINAAN PEMAIN MUDA
+      </div>
+
+      <h1>
+        BANGUN MASA DEPAN
+        <span>SEPAK BOLA</span>
+      </h1>
+
+      <p>
+        Akademi sepak bola yang berfokus pada pengembangan
+        teknik, fisik, mental, disiplin, dan karakter pemain
+        sejak usia dini.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#daftar" class="btn btn-primary">
+          Daftar Sekarang
+        </a>
+
+        <a href="#tentang" class="btn btn-outline">
+          Pelajari Akademi
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       TENTANG
+  ========================== -->
+
+  <section id="tentang">
+
+    <div class="about">
+
+      <div class="about-image">
+        ⚽
+      </div>
+
+      <div class="about-content">
+
+        <h2>
+          Mencetak Pemain,
+          Membangun Karakter
+        </h2>
+
+        <p>
+          Akademi Sepak Bola hadir sebagai wadah pembinaan
+          pemain muda untuk mengembangkan kemampuan sepak bola
+          secara bertahap dan terarah.
+        </p>
+
+        <p>
+          Kami percaya bahwa pemain hebat tidak hanya dibentuk
+          melalui kemampuan teknis, tetapi juga melalui
+          kedisiplinan, kerja sama, sportivitas, dan mental yang kuat.
+        </p>
+
+        <ul class="about-list">
+          <li>✓ Pelatih berpengalaman</li>
+          <li>✓ Program latihan terstruktur</li>
+          <li>✓ Pembinaan teknik dan fisik</li>
+          <li>✓ Pengembangan karakter pemain</li>
+          <li>✓ Kesempatan mengikuti kompetisi</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PROGRAM
+  ========================== -->
+
+  <section id="program">
+
+    <div class="section-title">
+
+      <small>Program Akademi</small>
+
+      <h2>
+        Program Latihan
+      </h2>
+
+      <p>
+        Program latihan disusun berdasarkan usia dan
+        perkembangan kemampuan masing-masing pemain.
+      </p>
+
+    </div>
+
+
+    <div class="program-grid">
+
+      <div class="program-card">
+
+        <div class="program-icon">
+          ⚽
+        </div>
+
+        <h3>
+          Teknik Dasar
+        </h3>
+
+        <p>
+          Melatih passing, control, dribbling, shooting,
+          ball mastery, dan kemampuan dasar sepak bola.
+        </p>
+
+      </div>
+
+
+      <div class="program-card">
+
+        <div class="program-icon">
+          🏃
+        </div>
+
+        <h3>
+          Fisik & Kebugaran
+        </h3>
+
+        <p>
+          Program peningkatan kecepatan, kelincahan,
+          koordinasi, stamina, dan kekuatan pemain.
+        </p>
+
+      </div>
+
+
+      <div class="program-card">
+
+        <div class="program-icon">
+          🧠
+        </div>
+
+        <h3>
+          Taktik & Mental
+        </h3>
+
+        <p>
+          Pemain belajar membaca permainan, pengambilan
+          keputusan, komunikasi, disiplin, dan mental bertanding.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       KELOMPOK USIA
+  ========================== -->
+
+  <section class="age-section" id="usia">
+
+    <div class="section-title">
+
+      <small>Kelompok Pembinaan</small>
+
+      <h2>
+        Pilih Kelompok Usia
+      </h2>
+
+      <p>
+        Program pembinaan disesuaikan dengan tahap
+        perkembangan pemain.
+      </p>
+
+    </div>
+
+
+    <div class="age-grid">
+
+      <div class="age-card">
+        <strong>U-8</strong>
+        <span>Usia 6–8 Tahun</span>
+      </div>
+
+      <div class="age-card">
+        <strong>U-10</strong>
+        <span>Usia 9–10 Tahun</span>
+      </div>
+
+      <div class="age-card">
+        <strong>U-12</strong>
+        <span>Usia 11–12 Tahun</span>
+      </div>
+
+      <div class="age-card">
+        <strong>U-14</strong>
+        <span>Usia 13–14 Tahun</span>
+      </div>
+
+      <div class="age-card">
+        <strong>U-16</strong>
+        <span>Usia 15–16 Tahun</span>
+      </div>
+
+      <div class="age-card">
+        <strong>U-18</strong>
+        <span>Usia 17–18 Tahun</span>
+      </div>
+
+      <div class="age-card">
+        <strong>GK</strong>
+        <span>Goalkeeper Training</span>
+      </div>
+
+      <div class="age-card">
+        <strong>ELITE</strong>
+        <span>Program Intensif</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FASILITAS
+  ========================== -->
+
+  <section id="fasilitas">
+
+    <div class="section-title">
+
+      <small>Fasilitas</small>
+
+      <h2>
+        Mendukung Perkembangan Pemain
+      </h2>
+
+      <p>
+        Fasilitas yang mendukung kegiatan latihan
+        dan perkembangan pemain.
+      </p>
+
+    </div>
+
+
+    <div class="facility-grid">
+
+      <div class="facility-card">
+
+        <div class="icon">
+          🏟️
+        </div>
+
+        <h3>
+          Lapangan
+        </h3>
+
+        <p>
+          Area latihan sepak bola untuk berbagai
+          kelompok usia.
+        </p>
+
+      </div>
+
+
+      <div class="facility-card">
+
+        <div class="icon">
+          🏋️
+        </div>
+
+        <h3>
+          Fitness & Fisik
+        </h3>
+
+        <p>
+          Program latihan fisik untuk meningkatkan
+          performa pemain.
+        </p>
+
+      </div>
+
+
+      <div class="facility-card">
+
+        <div class="icon">
+          🩹
+        </div>
+
+        <h3>
+          Pertolongan Pertama
+        </h3>
+
+        <p>
+          Perlengkapan dasar untuk penanganan
+          cedera saat latihan.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CTA
+  ========================== -->
+
+  <section class="cta" id="daftar">
+
+    <h2>
+      Siap Menjadi Pemain Hebat?
+    </h2>
+
+    <p>
+      Bergabunglah dan mulai perjalanan sepak bola
+      bersama akademi kami.
+    </p>
+
+    <a href="#" class="btn btn-primary"
+       onclick="daftarSekarang()">
+      📝 DAFTAR SEKARANG
+    </a>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="footer-content">
+
+      <div>
+
+        <h3>
+          ⚽ Akademi Sepak Bola
+        </h3>
+
+        <p>
+          Wadah pembinaan pemain muda untuk berkembang
+          melalui sepak bola, disiplin, kerja sama,
+          dan sportivitas.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Navigasi
+        </h3>
+
+        <ul>
+          <li><a href="#home">Beranda</a></li>
+          <li><a href="#tentang">Tentang</a></li>
+          <li><a href="#program">Program</a></li>
+          <li><a href="#usia">Kelompok Usia</a></li>
+        </ul>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Kontak
+        </h3>
+
+        <ul>
+          <li>📍 Indonesia</li>
+          <li>📞 08xxxxxxxxxx</li>
+          <li>📧 info@akademi.com</li>
+          <li>📷 Instagram @akademi</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+
+    <div class="copyright">
+      © 2026 Akademi Sepak Bola. Semua Hak Dilindungi.
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script>
+
+    function daftarSekarang() {
+
+      alert(
+        "Pendaftaran Akademi Sepak Bola akan segera dibuka! ⚽"
+      );
+
+    }
+
+  </script>
+
+</body>
+</html>
